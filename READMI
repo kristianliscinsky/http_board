@@ -1,0 +1,53 @@
+Program:
+HTTP nástenka
+
+Autor:
+Kristián Liščinský (xlisci01)
+
+Popis:
+Jednoduchá aplikácia umožňujúca klientom spravovať nástenky na serveri pomocou HTTP API. API umožňuje prezerať, pridávať, upravovať a mazať ako príspevky na nastenkách, tak aj samotné nástenky. Nástenkou sa rozumie usporiadaný zoznam textových príspevkov. Každý príspevok ma id čislované od 1 a textový obsah, ktorý môže byť viacriadkový.
+
+Použitie serveru:
+isaserver -p <PORT>
+
+PORT je číslo portu
+Server možno spustiť tiež s prepínačom -h, ktorý vypíše informácie o spôsobe spustenia.
+
+Použitie klienta:
+isaclient -H <HOST> -p <PORT> <COMMAND>
+
+HOST je názov/IP adresa servera (napr. thh.freenode.net)
+PORT je číslo portu
+COMMAND je jeden z nasledujích príkazov:
+	boards - Vráti zoznam dostupných nástenok, jedna na riadok.
+	board add <name> - Vytvorí novú prázdnu nástenku s názvom name.
+	board delete <name> - Zmaže nástenku name a všetok jej obsah.
+	board list <name> - Zobrazí obsah nástenky name.
+	item add <name> <content> - Vloží nový príspevok do nástenky name. Príspevok je vložený na koniec zoznamu.
+	item delete <name> <id> - Zmení obsah príspevku číslo id v nástenke name.
+	item update <name> <id> <content> - Zmaže príspevok číslo id z nástenky name.
+
+Klienta možno spustiť tiež s prepínačom -h, ktorý vypíše informácie o spôsobe spustenia.
+
+Príklady spustenia:
+./isaserver -p 9998
+./isaclient -H localhost -p 9998 board add Brno
+
+./isaserver -h
+
+./isaserver -p 6689
+./isaclient -H localhost -p 6689 boards
+
+./isaserver -p 7777
+./isaclient -H localhost -p 7777 idem update ISA 1 20bodov
+
+Odovzdane súbory:
+isaclient.c
+isaserver.c
+shelper.c
+shelper.h
+chelper.c
+chelper.h
+Makefile
+READMI
+manual.pdf
